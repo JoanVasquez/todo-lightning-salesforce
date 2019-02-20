@@ -1,0 +1,92 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes"
+                controller="RacesApexController">
+    <aura:attribute name="newRace" type="Race__c" 
+                    default="{'sobjectType':'Race__c',
+                             'Name': '',
+                             'Race_Type__c': '',
+                             'DateTime__c': '',
+                             'Location__c': '',
+                             'Attended__c': '',
+                             'Results__c': ''}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="appEvent" type="c:AddToRaceList" />
+    
+    <ltng:require styles="{!$Resource.slds100 + '/styles/salesforce-lightning-design-system.min.css'}" />
+    <div class="slds">
+        <div class="slds-m-around--small slds-p-top--large">
+            <div class="slds-form-stacked">
+                <h1 class="slds-text-heading__label">Enter New Race</h1>
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <ui:inputText class="slds-input" 
+                                      labelClass="slds-form-element__label" 
+                                      label="Name" 
+                                      aura:id="Name" 
+                                      value="{!v.newRace.Name}" />
+                    </div>
+                </div>
+                
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <ui:inputSelect class="slds-input" 
+                                        labelClass="slds-form-element__label" 
+                                        label="Race Type" 
+                                        aura:id="Type"
+                                        value="{!v.newRace.Race_Type__c}" />
+                    </div>
+                </div>
+                
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <ui:inputDateTime class="slds-input" 
+                                          labelClass="slds-form-element__label" 
+                                          label="Date/Time" 
+                                          aura:id="DateTime" 
+                                          displayDatePicker="true"
+                                          value="{!v.newRace.DateTime__c}" />
+                    </div>
+                </div>
+                
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <ui:inputTextArea class="slds-input" 
+                                          labelClass="slds-form-element__label" 
+                                          label="Location" 
+                                          aura:id="Location"
+                                          value="{!v.newRace.Location__c}" />
+                    </div>
+                </div>
+                
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <ui:inputCheckbox class="slds-checkbox" 
+                                          labelClass="slds-form-element__label" 
+                                          label="Attended" 
+                                          aura:id="Attended"
+                                          value="{!v.newRace.Attended__c}" />
+                    </div>
+                </div>
+                
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <ui:inputText class="slds-input" 
+                                      labelClass="slds-form-element__label" 
+                                      label="Results" 
+                                      aura:id="Results"
+                                      value="{!v.newRace.Results__c}" />
+                    </div>
+                </div>
+                
+                <div class="slds-form-element">
+                    <ui:button class="slds-button slds-button--neutral" 
+                               label="Submit" 
+                               press="{!c.newRace}" />
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    
+    
+</aura:component>
